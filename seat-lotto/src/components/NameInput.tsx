@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormControl } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 class NameInput extends React.Component<InputListProps, InputListState>{
   constructor(props:InputListProps){
     super(props);
@@ -10,19 +10,20 @@ class NameInput extends React.Component<InputListProps, InputListState>{
     }
   }
 
-  onTodoChange(value:string){
-    this.setState({value: value});
+  handleChange(event:any){
+    this.setState({value: event.target.value});
   }
 
   render() {
     return (
-      <FormControl  
-      placeholder="person name"
-      key={this.state.key}
-      id={this.state.id}
-      value={this.state.value}
-      onChange={e=>this.onTodoChange(e.target.value)}
-      ></FormControl>
+      <Form.Control type="text" 
+        placeholder='Person Name' 
+        id={`person-${this.state.id}`} 
+        defaultValue=''
+        key={this.state.id}
+        onChange={this.handleChange}
+        >
+      </Form.Control>
   );}
 }
 
